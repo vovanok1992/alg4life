@@ -68,7 +68,7 @@ public class AnnotationHelper {
         return classes;
     }
 
-    public static Iterable<Method> findAllMethodsWithAnnotation(Class annotationClass, String targetPackage) {
+    public static Collection<Method> findAllMethodsWithAnnotation(Class annotationClass, String targetPackage) {
         Collection<Method> result = new ArrayList<>();
         try {
             for (Class classWithSort : getClasses(targetPackage)) {
