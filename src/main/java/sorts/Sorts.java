@@ -45,6 +45,16 @@ public class Sorts {
     }
 
     @Sort
+    public static void gnomesort(int ar[]) {
+        int i = 0;
+
+        while (i < ar.length) {
+            if (i == 0 || ar[i-1] <= ar[i]) i++;
+            else {int tmp = ar[i]; ar[i] = ar[i-1]; ar[--i] = tmp;}
+        }
+    }
+
+    @Sort
     public static void mergeSort(int[] array) {
         int[] sortedArray = mergeSortRec(array);
         System.arraycopy(sortedArray, 0, array, 0, array.length);
@@ -71,15 +81,15 @@ public class Sorts {
         countingSort(array, minVal, maxVal);
     }
 
-    public static void countingSort(int[] array, int min, int max){
-        int[] count= new int[max - min + 1];
-        for(int number : array){
+    public static void countingSort(int[] array, int min, int max) {
+        int[] count = new int[max - min + 1];
+        for (int number : array) {
             count[number - min]++;
         }
-        int z= 0;
-        for(int i= min;i <= max;i++){
-            while(count[i - min] > 0){
-                array[z]= i;
+        int z = 0;
+        for (int i = min; i <= max; i++) {
+            while (count[i - min] > 0) {
+                array[z] = i;
                 z++;
                 count[i - min]--;
             }
