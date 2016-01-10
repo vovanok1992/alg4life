@@ -45,12 +45,11 @@ public class Sorts {
     }
 
     @Sort
-    public static void gnomesort(int ar[]) {
+    public static void gnomeSort(int[] array) {
         int i = 0;
-
-        while (i < ar.length) {
-            if (i == 0 || ar[i-1] <= ar[i]) i++;
-            else {int tmp = ar[i]; ar[i] = ar[i-1]; ar[--i] = tmp;}
+        while (i < array.length) {
+            if (i == 0 || array[i-1] <= array[i]) i++;
+            else {int tmp = array[i]; array[i] = array[i-1]; array[--i] = tmp;}
         }
     }
 
