@@ -50,6 +50,42 @@ public class Sorts {
         System.arraycopy(sortedArray, 0, array, 0, array.length);
     }
 
+    /**
+     * Because the algorithm uses only simple for loops, without recursion or subroutine calls, it is straightforward to
+     * analyze. The initialization of the count array, and the second for loop which performs a prefix sum on the count
+     * array, each iterate at most k + 1 times and therefore take O(k) time. The other two for loops, and the
+     * initialization of the output array, each take O(n) time. Therefore the time for the whole algorithm is the sum
+     * of the times for these steps, O(n + k).
+     * <p>
+     * Because it uses arrays of length k + 1 and n, the total space usage of the algorithm is also O(n + k).
+     * For problem instances in which the maximum key value is significantly smaller than the number of items,
+     * counting sort can be highly space-efficient, as the only storage it uses other than its input and output arrays
+     * is the Count array which uses space O(k).
+     *
+     * @see <a href="https://en.wikipedia.org/wiki/Counting_sort">Counting_sort</a>
+     */
+    @Sort
+    public static void countingSort(int[] array) {
+        int maxVal = Arrays.stream(array).max().getAsInt();
+        int minVal = Arrays.stream(array).min().getAsInt();
+        countingSort(array, minVal, maxVal);
+    }
+
+    public static void countingSort(int[] array, int min, int max){
+        int[] count= new int[max - min + 1];
+        for(int number : array){
+            count[number - min]++;
+        }
+        int z= 0;
+        for(int i= min;i <= max;i++){
+            while(count[i - min] > 0){
+                array[z]= i;
+                z++;
+                count[i - min]--;
+            }
+        }
+    }
+
     private static int[] mergeSortRec(int[] array) {
         if (array.length < 2) return array;
         return merge(mergeSortRec(Arrays.copyOfRange(array, 0, array.length / 2)),

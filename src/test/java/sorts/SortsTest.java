@@ -7,10 +7,7 @@ import utils.AnnotationHelper;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -41,10 +38,9 @@ public class SortsTest {
     }
 
     private void testSorting(int[] result) {
-        assertEquals(getArrayForTest().length, result.length);
-        for(int i = 1; i < result.length; i++){
-            assertTrue(result[i-1] <= result[i]);
-        }
+        int[] expected = getArrayForTest();
+        Arrays.sort(expected);
+        assertArrayEquals(expected, result);
     }
 
     @Test

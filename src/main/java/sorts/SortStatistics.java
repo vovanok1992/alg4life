@@ -83,6 +83,8 @@ public class SortStatistics {
     }
 
     public static void main(String[] args) {
-        printStatistics(100000, 0, 1000);
+        printStatistics(SortsConstants.DEFAULT_RANGE,
+                SortsConstants.DEFAULT_MIN_VALUE,
+                SortsConstants.DEFAULT_MAX_VALUE);
     }
 }
