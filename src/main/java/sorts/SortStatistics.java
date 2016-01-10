@@ -83,6 +83,6 @@ public class SortStatistics {
     }
 
     public static void main(String[] args) {
-        printStatistics(10000, 0, 1000);
+        printStatistics(100000, 0, 1000);
     }
 }

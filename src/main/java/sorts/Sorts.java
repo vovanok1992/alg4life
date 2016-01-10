@@ -13,6 +13,24 @@ public class Sorts {
     }
 
     @Sort
+    public static void defaultSort(int[] array) {
+        Arrays.sort(array);
+    }
+
+    @Sort
+    public static void bubbleSort(int[] array) {
+        for(int i = 0; i < array.length; i++){
+            for (int j = 0; j < array.length - 1; j++) {
+                if(array[j] > array[j+1]){
+                    int temp = array[j];
+                    array[j] = array[j+1];
+                    array[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    @Sort
     public static void insertionSort(int[] array) {
         for (int i = 1; i < array.length; i++) {
             int key = array[i];
@@ -21,9 +39,9 @@ public class Sorts {
                 array[j + 1] = array[j];
                 j--;
             }
+
             array[j + 1] = key;
         }
-
     }
 
     @Sort
@@ -44,19 +62,20 @@ public class Sorts {
         int count2 = 0;
         int resultCount = 0;
 
-        while (resultCount != result.length) {
-            if (count1 < arr.length && count2 < arr2.length) {
-                if (arr[count1] < arr2[count2]) {
-                    result[resultCount++] = arr[count1++];
-                } else {
-                    result[resultCount++] = arr2[count2++];
-                }
-            } else if (count1 < arr.length) {
+        while (count1 < arr.length && count2 < arr2.length) {
+            if (arr[count1] < arr2[count2]) {
                 result[resultCount++] = arr[count1++];
-            } else if (count2 < arr2.length) {
+            } else {
                 result[resultCount++] = arr2[count2++];
             }
         }
+
+        if (count1 < arr.length) {
+            System.arraycopy(arr, count1, result, resultCount, arr.length - count1);
+        } else {
+            System.arraycopy(arr2, count2, result, resultCount, arr2.length - count2);
+        }
+
         return result;
     }
 
