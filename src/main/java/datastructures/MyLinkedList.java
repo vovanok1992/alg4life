@@ -38,6 +38,23 @@ public class MyLinkedList<T> {
         return size;
     }
 
+    public void removeByValue(T value){
+        Node<T> currentNode = head;
+        Node<T> previous = null;
+        while (currentNode != null) {
+            if(currentNode.value.equals(value)){
+                if(previous != null){
+                    previous.next = currentNode.next;
+                    tail = previous;
+                } else {
+                    head = previous = currentNode.next;
+                }
+            }
+            previous = currentNode;
+            currentNode = currentNode.next;
+        }
+    }
+
     public T get(int index) {
         Node<T> currentNode = head;
         int currentIndex = 0;

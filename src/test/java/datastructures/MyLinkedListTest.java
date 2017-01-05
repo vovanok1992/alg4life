@@ -34,7 +34,22 @@ public class MyLinkedListTest {
         assertEquals("[1, 2, 3, 4]", list.toString());
 
         assertEquals(3, (int) list.get(2));
-        assertEquals(new LinkedList<Integer>(){{add(1); add(2); add(3); add(4);}}.toString(), list.toString());
+
+
+        list.removeByValue(1);
+        assertEquals("[2, 3, 4]", list.toString());
+
+        assertEquals(new LinkedList<Integer>(){{add(2); add(3); add(4);}}.toString(), list.toString());
+
+
+        list.removeByValue(3);
+        assertEquals("[2, 4]", list.toString());
+
+        list.removeByValue(4);
+        assertEquals("[2]", list.toString());
+        assertEquals(2, (int) list.getTailVal());
+        list.removeByValue(2);
+        assertEquals("[]", list.toString());
     }
 
 
